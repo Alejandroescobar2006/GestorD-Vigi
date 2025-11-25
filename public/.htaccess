@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Denegar acceso directo a archivos en esta carpeta
+Deny from all
+
+# Denegar acceso directo a archivos en todas las subcarpetas
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt|zip)$">
+    Deny from all
+</FilesMatch>
